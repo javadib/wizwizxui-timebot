@@ -486,7 +486,7 @@ if($data=="inviteFriends"){
         $inviteAmount = number_format($stmt->get_result()->fetch_assoc()['value']??0) . " تومان";
         $stmt->close();
         
-        $getBotInfo = json_decode(file_get_contents("http://api.telegram.org/bot" . $botToken . "/getMe"),true);
+        $getBotInfo = json_decode(file_get_contents(get_tlg_base_url("http://api.telegram.org/bot" . $botToken . "/getMe")),true);
         $botId = $getBotInfo['result']['username'];
         
         $link = "t.me/$botId?start=" . $from_id;
@@ -801,8 +801,8 @@ if($data=="editRewardChannel" && ($from_id == $admin || $userInfo['isAdmin'] == 
     setUser($data);
 }
 if($userInfo['step'] == "editRewardChannel" && ($from_id == $admin || $userInfo['isAdmin'] == true) && $text != $cancelText){
-    $botId = json_decode(file_get_contents("https://api.telegram.org/bot$botToken/getme"))->result->id;
-    $result = json_decode(file_get_contents("https://api.telegram.org/bot$botToken/getChatMember?chat_id=$text&user_id=$botId"));
+    $botId = json_decode(file_get_contents(get_tlg_base_url("https://api.telegram.org/bot$botToken/getme")))->result->id;
+    $result = json_decode(file_get_contents(get_tlg_base_url("https://api.telegram.org/bot$botToken/getChatMember?chat_id=$text&user_id=$botId")));
     if($result->ok){
         if($result->result->status == "administrator"){
             $botState['rewardChannel'] = $text;
@@ -833,8 +833,8 @@ if($data=="editLockChannel" && ($from_id == $admin || $userInfo['isAdmin'] == tr
     setUser($data);
 }
 if($userInfo['step'] == "editLockChannel" && ($from_id == $admin || $userInfo['isAdmin'] == true) && $text != $cancelText){
-    $botId = json_decode(file_get_contents("https://api.telegram.org/bot$botToken/getme"))->result->id;
-    $result = json_decode(file_get_contents("https://api.telegram.org/bot$botToken/getChatMember?chat_id=$text&user_id=$botId"));
+    $botId = json_decode(file_get_contents(get_tlg_base_url("https://api.telegram.org/bot$botToken/getme")))->result->id;
+    $result = json_decode(file_get_contents(get_tlg_base_url("https://api.telegram.org/bot$botToken/getChatMember?chat_id=$text&user_id=$botId")));
     if($result->ok){
         if($result->result->status == "administrator"){
             $botState['lockChannel'] = $text;

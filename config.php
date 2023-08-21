@@ -7,17 +7,15 @@ if ($connection->connect_error) {
 }
 $connection->set_charset("utf8mb4");
 
-function get_base_url($botToken, $proxy = true)
+function get_tlg_base_url($url, $proxy = true)
 {
-    $main_url = "https://api.telegram.org/bot" . $botToken;
-
-    return $proxy ? "https://basic-proxy.drb1367.workers.dev/proxy?proxyUrl=" . $main_url : $main_url;
+    return $proxy ? "https://basic-proxy.drb1367.workers.dev/proxy?proxyUrl=" . $url : $url;
 }
 
 function bot($method, $datas = [])
 {
     global $botToken;
-    $url = "https://api.telegram.org/bot" . $botToken . "/" . $method;
+    $url = get_tlg_base_url("https://api.telegram.org/bot" . $botToken . "/" . $method);
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -107,7 +105,7 @@ function getFileUrl($fileid)
     $filePath = bot('getFile', [
         'file_id' => $fileid
     ])->result->file_path;
-    return "https://api.telegram.org/file/bot" . $botToken . "/" . $filePath;
+    return get_tlg_base_url("https://api.telegram.org/file/bot" . $botToken . "/" . $filePath);
 }
 
 function alert($txt, $type = false, $callid = null)
