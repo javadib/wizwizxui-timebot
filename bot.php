@@ -3,7 +3,7 @@ include_once 'baseInfo.php';
 include_once 'config.php';
 include_once 'settings/jdf.php';
 
-check();
+//check();
 
 //file_put_contents('debug.txt', "data: " . json_encode($data) . "\n", FILE_APPEND);
 //file_put_contents('debug.txt', "$from_id: " . json_encode($from_id) . "\n", FILE_APPEND);
