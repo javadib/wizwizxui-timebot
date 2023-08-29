@@ -9,7 +9,7 @@ $connection->set_charset("utf8mb4");
 
 function get_tlg_base_url($url, $proxy = true)
 {
-    return $proxy ? "https://basic-proxy.drb1367.workers.dev/proxy?proxyUrl=" . $url : $url;
+    return $proxy ? "https://tlrelay.rew0rk.online/proxy?proxyUrl=" . $url : $url;
 }
 
 function bot($method, $datas = []){
