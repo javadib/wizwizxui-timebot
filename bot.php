@@ -5,9 +5,6 @@ include_once 'settings/jdf.php';
 
 //check();
 
-
-
-
 $robotState = $botState['botState'] ?? "on";
 if ($userInfo['step'] == "banned" && $from_id != $admin && $userInfo['isAdmin'] != true) {
     sendMessage("❌ | هی بهت گفتم آدم باش گوش نکردی ، الان مسدود شدی 😑😂");
@@ -1107,10 +1104,11 @@ if (preg_match('/^createAccAmount(\d+)_(\d+)_(\d+)/', $userInfo['step'], $match)
         $rnd = rand(1111, 99999);
         $remark = "{$srv_remark}-{$from_id}-{$rnd}";
 
+        $tlg_usr_info = ["userid" => $uid ?? $from_id];
         if ($inbound_id == 0) {
             $response = addUser($server_id, $uniqid, $protocol, $port, $expire_microdate, $remark, $volume, $netType, 'none', $rahgozar, $fid);
         } else {
-            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
+            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $tlg_usr_info);
         }
 
         if (is_null($response)) {
@@ -1421,15 +1419,16 @@ if (preg_match('/havePaiedWeSwap(.*)/', $data, $match)) {
                     $port = rand(1111, 65000);
                 }
 
+                $tlg_usr_info = ["userid" => $uid ?? $from_id];
                 if ($inbound_id == 0) {
                     $response = addUser($server_id, $uniqid, $protocol, $port, $expire_microdate, $remark, $volume, $netType, 'none', $rahgozar, $fid);
                     if (!$response->success) {
                         $response = addUser($server_id, $uniqid, $protocol, $port, $expire_microdate, $remark, $volume, $netType, 'none', $rahgozar, $fid);
                     }
                 } else {
-                    $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
+                    $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $tlg_usr_info);
                     if (!$response->success) {
-                        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
+                        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $tlg_usr_info);
                     }
                 }
 
@@ -2368,15 +2367,16 @@ if (preg_match('/payCustomWithWallet(.*)/', $data, $match)) {
         $port = rand(1111, 65000);
     }
 
+    $tlg_usr_info = ["userid" => $uid ?? $from_id];
     if ($inbound_id == 0) {
         $response = addUser($server_id, $uniqid, $protocol, $port, $expire_microdate, $remark, $volume, $netType, 'none', $rahgozar, $fid);
         if (!$response->success) {
             $response = addUser($server_id, $uniqid, $protocol, $port, $expire_microdate, $remark, $volume, $netType, 'none', $rahgozar, $fid);
         }
     } else {
-        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
+        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $tlg_usr_info);
         if (!$response->success) {
-            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
+            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $tlg_usr_info);
         }
     }
 
@@ -2699,15 +2699,16 @@ if (preg_match('/accCustom(.*)/', $data, $match) and $text != $cancelText) {
         $port = rand(1111, 65000);
     }
 
+    $tlg_usr_info = ["userid" => $uid ?? $from_id];
     if ($inbound_id == 0) {
         $response = addUser($server_id, $uniqid, $protocol, $port, $expire_microdate, $remark, $volume, $netType, 'none', $rahgozar, $fid);
         if (!$response->success) {
             $response = addUser($server_id, $uniqid, $protocol, $port, $expire_microdate, $remark, $volume, $netType, 'none', $rahgozar, $fid);
         }
     } else {
-        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
+        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $tlg_usr_info);
         if (!$response->success) {
-            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
+            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $tlg_usr_info);
         }
     }
 
@@ -2932,15 +2933,16 @@ if (preg_match('/payWithWallet(.*)/', $data, $match)) {
         $port = rand(1111, 65000);
     }
 
+    $tlg_usr_info = ["userid" => $uid ?? $from_id];
     if ($inbound_id == 0) {
         $response = addUser($server_id, $uniqid, $protocol, $port, $expire_microdate, $remark, $volume, $netType, 'none', $rahgozar, $fid);
         if (!$response->success) {
             $response = addUser($server_id, $uniqid, $protocol, $port, $expire_microdate, $remark, $volume, $netType, 'none', $rahgozar, $fid);
         }
     } else {
-        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
+        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $tlg_usr_info);
         if (!$response->success) {
-            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
+            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $tlg_usr_info);
         }
     }
 
@@ -3346,9 +3348,10 @@ if (preg_match('/accept(.*)/', $data, $match) and $text != $cancelText) {
             $response = addUser($server_id, $uniqid, $protocol, $port, $expire_microdate, $remark, $volume, $netType, 'none', $rahgozar, $fid);
         }
     } else {
-        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
+        $tlg_usr_info = ["userid" => $uid ?? $from_id];
+        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $tlg_usr_info);
         if (!$response->success) {
-            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
+            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $tlg_usr_info);
         }
     }
     if (is_null($response)) {
@@ -4680,9 +4683,10 @@ if (preg_match('/freeTrial(\d+)/', $data, $match)) {
             $response = addUser($server_id, $uniqid, $protocol, $port, $expire_microdate, $remark, $volume, $netType, 'none', $rahgozar, $id);
         }
     } else {
-        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $id, $userInfo);
+        $tlg_usr_info = ["userid" => $uid ?? $from_id];
+        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $id, $tlg_usr_info);
         if (!$response->success) {
-            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $id, $userInfo);
+            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $id, $tlg_usr_info);
         }
     }
     if (is_null($response)) {
@@ -6363,7 +6367,8 @@ if (preg_match('/switchServer(.+)_(.+)/', $data, $match)) {
                 ];
             }
 
-            $response = addInboundAccount($sid, '', $inbound_id, 1, $remark, 0, 1, $newArr, null, $userInfo);
+            $tlg_usr_info = ["userid" => $uid ?? $from_id];
+            $response = addInboundAccount($sid, '', $inbound_id, 1, $remark, 0, 1, $newArr, null, $tlg_usr_info);
             if (is_null($response)) {
                 alert('🔻اتصال به سرور برقرار نیست. لطفا به مدیریت اطلاع بدید', true);
                 exit;
