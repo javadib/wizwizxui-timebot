@@ -1985,7 +1985,10 @@ function addInboundAccount($server_id, $client_id, $inbound_id, $expiryTime, $re
                     "limitIp" => $limitip,
                     "flow" => $flow,
                     "totalGB" => $volume,
-                    "expiryTime" => $expiryTime
+                    "expiryTime" => $expiryTime,
+                    "enable" => true,
+                    "tgId" =>  $user_info["userid"] ?? "",
+                    "subId" => RandomString(16)
                 ];
 		    }else{
                 $newClient = [
@@ -1993,7 +1996,10 @@ function addInboundAccount($server_id, $client_id, $inbound_id, $expiryTime, $re
                     "email" => $remark,
                     "limitIp" => $limitip,
                     "totalGB" => $volume,
-                    "expiryTime" => $expiryTime
+                    "expiryTime" => $expiryTime,
+                    "enable" => true,
+                    "tgId" =>  $user_info["userid"] ?? "",
+                    "subId" => RandomString(16)
                 ];
 		    }
     	}else{
@@ -2003,7 +2009,10 @@ function addInboundAccount($server_id, $client_id, $inbound_id, $expiryTime, $re
                 "email" => $remark,
                 "limitIp" => $limitip,
                 "totalGB" => $volume,
-                "expiryTime" => $expiryTime
+                "expiryTime" => $expiryTime,
+                "enable" => true,
+                "tgId" =>  $user_info["userid"] ?? "",
+                "subId" => RandomString(16)
             ];
 		}
         $settings['clients'][] = $newClient;
