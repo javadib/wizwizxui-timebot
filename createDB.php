@@ -37,9 +37,20 @@ $connection->query("CREATE TABLE `discounts` (
   `expire_date` int(255) NOT NULL,
   `expire_count` int(255) NOT NULL,
   `used_by` text DEFAULT NULL,
+  `can_use` int(255) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
 )");
 
+$connection->query("CREATE TABLE `gift_list` (
+  `id` int(255) NOT NULL,
+  `server_id` int(255) NOT NULL,
+  `volume` int(255) NOT NULL,
+  `day` int(255) NOT NULL,
+  `offset` int(255) DEFAULT 0,
+  `server_offset` int(255) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+)
+");
 
 $connection->query("CREATE TABLE `increase_day` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
@@ -104,6 +115,7 @@ $connection->query("CREATE TABLE `orders_list` (
   `date` varchar(50) NOT NULL,
   `notif` int(11) NOT NULL DEFAULT 0,
   `rahgozar` int(10) DEFAULT 0,
+  `agent_bought` int(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_persian_ci");
 
@@ -111,6 +123,7 @@ $connection->query("CREATE TABLE `orders_list` (
 $connection->query("CREATE TABLE IF NOT EXISTS `pays` (
     `id` int(255) NOT NULL AUTO_INCREMENT,
     `hash_id` varchar(1000) NOT NULL,
+    `description` varchar(5000) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
     `payid` varchar(500) DEFAULT NULL,
     `user_id` bigint(10) NOT NULL,
     `type` varchar(100),
@@ -120,6 +133,8 @@ $connection->query("CREATE TABLE IF NOT EXISTS `pays` (
     `price` int(255) NOT NULL,
     `request_date` int(255) NOT NULL,
     `state` varchar(255) NOT NULL,
+    `agent_bought` int(1) NOT NULL DEFAULT 0,
+    `agent_count` int(255) NOT NULL DEFAULT 0,
     PRIMARY KEY (`id`)
 );");
 
@@ -190,6 +205,9 @@ $connection->query("CREATE TABLE `server_plans` (
   `serverNames` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL,
   `spiderX` varchar(500) DEFAULT NULL,
   `flow` varchar(50) NOT NULL DEFAULT 'None',
+  `custom_path` int(10) DEFAULT 1,
+  `custom_port` int(255) NOT NULL DEFAULT 0,
+  `custom_sni` varchar(500)  CHARACTER SET utf8mb4 COLLATE utf8mb4_persian_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_persian_ci");
 
@@ -225,6 +243,10 @@ $connection->query("CREATE TABLE `users` (
   `freetrial` varchar(10) DEFAULT NULL,
   `isAdmin` tinyint(1) NOT NULL DEFAULT 0,
   `first_start` varchar(10) DEFAULT NULL,
+  `temp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `is_agent` int(1) NOT NULL DEFAULT 0,
+  `discount_percent` int(255) NOT NULL DEFAULT 0,
+  `agent_date` int(255) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_persian_ci");
 
