@@ -497,7 +497,7 @@ if ($data == "inviteFriends") {
         $inviteAmount = number_format($stmt->get_result()->fetch_assoc()['value'] ?? 0) . " تومان";
         $stmt->close();
 
-        $getBotInfo = json_decode(file_get_contents(get_tlg_base_url("http://api.telegram.org/bot" . $botToken . "/getMe")), true);
+        $getBotInfo = json_decode(file_get_contents(get_tlg_base_url("https://api.telegram.org/bot" . $botToken . "/getMe")), true);
         $botId = $getBotInfo['result']['username'];
 
         $link = "t.me/$botId?start=" . $from_id;
@@ -509,6 +509,7 @@ if ($data == "inviteFriends") {
             $res = sendPhoto($inviteText['file_id'], $txt, null, "HTML");
         }
         $msgId = $res->result->message_id;
+        sendMessage($link, null, null, null, $msgId);
         sendMessage("با لینک بالا دوستاتو به ربات دعوت کن و با هر خرید $inviteAmount بدست بیار", null, null, null, $msgId);
     } else alert("این قسمت غیر فعال است");
 }
