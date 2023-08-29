@@ -509,7 +509,6 @@ if ($data == "inviteFriends") {
             $res = sendPhoto($inviteText['file_id'], $txt, null, "HTML");
         }
         $msgId = $res->result->message_id;
-        sendMessage($link, null, null, null, $msgId);
         sendMessage("با لینک بالا دوستاتو به ربات دعوت کن و با هر خرید $inviteAmount بدست بیار", null, null, null, $msgId);
     } else alert("این قسمت غیر فعال است");
 }
