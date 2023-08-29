@@ -5,9 +5,7 @@ include_once 'settings/jdf.php';
 
 //check();
 
-//file_put_contents('debug.txt', "data: " . json_encode($data) . "\n", FILE_APPEND);
-//file_put_contents('debug.txt', "$from_id: " . json_encode($from_id) . "\n", FILE_APPEND);
-//file_put_contents('debug.txt', "$userInfo: " . json_encode($userInfo) . "\n", FILE_APPEND);
+
 
 
 $robotState = $botState['botState'] ?? "on";
@@ -1112,7 +1110,7 @@ if (preg_match('/^createAccAmount(\d+)_(\d+)_(\d+)/', $userInfo['step'], $match)
         if ($inbound_id == 0) {
             $response = addUser($server_id, $uniqid, $protocol, $port, $expire_microdate, $remark, $volume, $netType, 'none', $rahgozar, $fid);
         } else {
-            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid);
+            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
         }
 
         if (is_null($response)) {
@@ -1429,9 +1427,9 @@ if (preg_match('/havePaiedWeSwap(.*)/', $data, $match)) {
                         $response = addUser($server_id, $uniqid, $protocol, $port, $expire_microdate, $remark, $volume, $netType, 'none', $rahgozar, $fid);
                     }
                 } else {
-                    $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid);
+                    $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
                     if (!$response->success) {
-                        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid);
+                        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
                     }
                 }
 
@@ -2376,9 +2374,9 @@ if (preg_match('/payCustomWithWallet(.*)/', $data, $match)) {
             $response = addUser($server_id, $uniqid, $protocol, $port, $expire_microdate, $remark, $volume, $netType, 'none', $rahgozar, $fid);
         }
     } else {
-        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid);
+        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
         if (!$response->success) {
-            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid);
+            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
         }
     }
 
@@ -2707,9 +2705,9 @@ if (preg_match('/accCustom(.*)/', $data, $match) and $text != $cancelText) {
             $response = addUser($server_id, $uniqid, $protocol, $port, $expire_microdate, $remark, $volume, $netType, 'none', $rahgozar, $fid);
         }
     } else {
-        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid);
+        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
         if (!$response->success) {
-            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid);
+            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
         }
     }
 
@@ -2940,9 +2938,9 @@ if (preg_match('/payWithWallet(.*)/', $data, $match)) {
             $response = addUser($server_id, $uniqid, $protocol, $port, $expire_microdate, $remark, $volume, $netType, 'none', $rahgozar, $fid);
         }
     } else {
-        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid);
+        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
         if (!$response->success) {
-            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid);
+            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
         }
     }
 
@@ -3348,9 +3346,9 @@ if (preg_match('/accept(.*)/', $data, $match) and $text != $cancelText) {
             $response = addUser($server_id, $uniqid, $protocol, $port, $expire_microdate, $remark, $volume, $netType, 'none', $rahgozar, $fid);
         }
     } else {
-        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid);
+        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
         if (!$response->success) {
-            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid);
+            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $fid, $userInfo);
         }
     }
     if (is_null($response)) {
@@ -4682,9 +4680,9 @@ if (preg_match('/freeTrial(\d+)/', $data, $match)) {
             $response = addUser($server_id, $uniqid, $protocol, $port, $expire_microdate, $remark, $volume, $netType, 'none', $rahgozar, $id);
         }
     } else {
-        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $id);
+        $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $id, $userInfo);
         if (!$response->success) {
-            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $id);
+            $response = addInboundAccount($server_id, $uniqid, $inbound_id, $expire_microdate, $remark, $volume, $limitip, null, $id, $userInfo);
         }
     }
     if (is_null($response)) {
@@ -6365,7 +6363,7 @@ if (preg_match('/switchServer(.+)_(.+)/', $data, $match)) {
                 ];
             }
 
-            $response = addInboundAccount($sid, '', $inbound_id, 1, $remark, 0, 1, $newArr);
+            $response = addInboundAccount($sid, '', $inbound_id, 1, $remark, 0, 1, $newArr, null, $userInfo);
             if (is_null($response)) {
                 alert('🔻اتصال به سرور برقرار نیست. لطفا به مدیریت اطلاع بدید', true);
                 exit;

@@ -1940,7 +1940,8 @@ function resetClientTraffic($server_id, $remark, $inboundId = null){
     return $response = json_decode($response);
 
 }
-function addInboundAccount($server_id, $client_id, $inbound_id, $expiryTime, $remark, $volume, $limitip = 1, $newarr = '', $planId = null){
+function addInboundAccount($server_id, $client_id, $inbound_id, $expiryTime, $remark, $volume, $limitip = 1, $newarr = '',
+                           $planId = null,  $user_info = []){
     global $connection;
     $stmt = $connection->prepare("SELECT * FROM server_config WHERE id=?");
     $stmt->bind_param("i", $server_id);
