@@ -80,21 +80,23 @@ $connection->query("CREATE TABLE `increase_plan` (
 
 $connection->query("CREATE TABLE `needed_sofwares` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) CHARACTER SET utf8 COLLATE utf8_persian_ci NOT NULL,
+  `title` varchar(100) CHARACTER SET utf8 COLLATE utf8mb4_persian_ci NOT NULL,
   `link` varchar(250) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
 )");
 
 $connection->query("INSERT INTO `needed_sofwares` (`id`, `title`, `link`, `status`) VALUES
-(1, 'ios fair-vpn', 'https://apps.apple.com/us/app/fair-vpn/id1533873488', 1),
-(2, 'ios napsternetv', 'https://apps.apple.com/us/app/napsternetv/id1629465476', 1),
-(3, 'ios oneclick', 'https://apps.apple.com/us/app/id1545555197', 1),
-(4, 'android v2rayng', 'https://play.google.com/store/apps/details?id=com.v2ray.ang&hl=en&gl=US', 1),
-(5, 'android sagernet', 'https://play.google.com/store/apps/details?id=io.nekohasekai.sagernet&hl=de&gl=US', 1),
-(6, 'android onclick', 'https://play.google.com/store/apps/details?id=earth.oneclick', 1),
-(7, 'windows v2rayng', 'https://google.com', 1),
-(8, 'mac fair', 'https://apps.apple.com/us/app/fair-vpn/id1533873488', 1);
+(1,  '📱 iOS - Fair-VPN', 'https://apps.apple.com/us/app/fair-vpn/id1533873488', 0),
+(2,  '📱 iOS - Napsternetv', 'https://apps.apple.com/us/app/napsternetv/id1629465476', 0),
+(3,  '📱 iOS - Oneclick', 'https://apps.apple.com/us/app/id1545555197', 0),
+(4,  '📱 iOS - FoxRay', 'https://apps.apple.com/us/app/foxray/id6448898396', 1),
+(5,  '📱 iOS - V2Box', 'https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690', 1),
+(6,  '📟 Android - v2rayNG', 'https://play.google.com/store/apps/details?id=com.v2ray.ang&hl=en&gl=US', 1),
+(7,  '📟 Android - SagerNet', 'https://play.google.com/store/apps/details?id=io.nekohasekai.sagernet&hl=de&gl=US', 1),
+(8,  '📟 Android - Onclick', 'https://play.google.com/store/apps/details?id=earth.oneclick', 0),
+(9,  '💻 Windows - v2rayN', 'https://github.com/2dust/v2rayN/releases/download/6.23/v2rayN-With-Core.zip', 1),
+(10, '🍏 MacOs - fair', 'https://apps.apple.com/us/app/fair-vpn/id1533873488', 1)
 ");
 
 
