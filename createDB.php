@@ -94,7 +94,7 @@ $connection->query("INSERT INTO `needed_sofwares` (`id`, `title`, `link`, `statu
 (5,  '📱 iOS - V2Box', 'https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690', 1),
 (6,  '📟 Android - v2rayNG', 'https://play.google.com/store/apps/details?id=com.v2ray.ang&hl=en&gl=US', 1),
 (7,  '📟 Android - SagerNet', 'https://play.google.com/store/apps/details?id=io.nekohasekai.sagernet&hl=de&gl=US', 1),
-(8,  '📟 Android - Onclick', 'https://play.google.com/store/apps/details?id=earth.oneclick', 0),
+(8,  '📟 Android - OneClick', 'https://play.google.com/store/apps/details?id=earth.oneclick', 0),
 (9,  '💻 Windows - v2rayN', 'https://github.com/2dust/v2rayN/releases/download/6.23/v2rayN-With-Core.zip', 1),
 (10, '🍏 MacOs - fair', 'https://apps.apple.com/us/app/fair-vpn/id1533873488', 1)
 ");
